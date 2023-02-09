@@ -8,16 +8,23 @@
     "@testing-library/user-event": "^13.5.0",
     "animate.css": "^4.1.1",
     "bootstrap-icons": "^1.8.1",
+    "electron-is-dev": "^2.0.0",
+    "electron-squirrel-startup": "^1.0.0",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-scripts": "5.0.0",
     "web-vitals": "^2.1.4"
   },
+  "main": "public/electron.js",
+  "homepage": "./",
   "scripts": {
     "start": "react-scripts start",
+    "dev": "electron-forge start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "package": "electron-forge package",
+    "make": "electron-forge make"
   },
   "eslintConfig": {
     "extends": [
@@ -38,6 +45,39 @@
     ]
   },
   "devDependencies": {
+    "@electron-forge/cli": "^6.0.0-beta.67",
+    "@electron-forge/maker-deb": "^6.0.0-beta.67",
+    "@electron-forge/maker-rpm": "^6.0.0-beta.67",
+    "@electron-forge/maker-squirrel": "^6.0.0-beta.67",
+    "@electron-forge/maker-zip": "^6.0.0-beta.67",
+    "electron": "^21.1.0",
     "tailwindcss": "^3.0.23"
+  },
+  "config": {
+    "forge": {
+      "packagerConfig": {},
+      "makers": [
+        {
+          "name": "@electron-forge/maker-squirrel",
+          "config": {
+            "name": "english_class_minigame"
+          }
+        },
+        {
+          "name": "@electron-forge/maker-zip",
+          "platforms": [
+            "darwin"
+          ]
+        },
+        {
+          "name": "@electron-forge/maker-deb",
+          "config": {}
+        },
+        {
+          "name": "@electron-forge/maker-rpm",
+          "config": {}
+        }
+      ]
+    }
   }
 }
